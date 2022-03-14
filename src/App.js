@@ -4,14 +4,12 @@ import Home from './pages/Home';
 import Company from './pages/Company';
 
 import Container from './components/layout/Container';
+import Navbar from './components/layout/Navbar';
 
 function App() {
   return (
     <Router>
-      <ul>
-        <Link to='/'>Home</Link>
-        <Link to='/company'>Company</Link>
-      </ul>
+      <Navbar />
       <Container>
         <Routes>
           <Route path="/" element={<Home/>}></Route>
