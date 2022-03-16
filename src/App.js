@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Link, REdirect } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, Redirect } from 'react-router-dom';
 
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -9,12 +10,16 @@ import Container from './components/layout/Container';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
-function CustomRoute(){
+import { Context } from './context/AuthContext';
+
+function CustomRoute({ isPrivate, ...rest }){
   const { authenticated } = useContext(Context);
 
   if(isPrivate && !authenticated){
     return <Redirect to='/login' />;
   }
+
+  return <Route {...rest} />;
 }
 
 function App() {
@@ -23,10 +28,10 @@ function App() {
       <Navbar />
       <Container>
         <Routes>
-          <Route path="/" element={<Home/>}></Route>
-          <Route path="/login" element={<Login/>}></Route>
-          <Route path="/modules" element={<Modules/>}/>
-          <Route path="/classes" element={<Classes/>}/>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <CustomRoute path="/modules" element={<Modules/>}/>
+          <CustomRoute path="/classes" element={<Classes/>}/>
         </Routes>
       </Container>
       <Footer/>
