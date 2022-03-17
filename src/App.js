@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -12,15 +12,6 @@ import Footer from './components/layout/Footer';
 
 import { Context } from './context/AuthContext';
 
-function CustomRoute({ isPrivate, ...rest }){
-  const { authenticated } = useContext(Context);
-
-  if(isPrivate && !authenticated){
-    return <Redirect to='/login' />;
-  }
-
-  return <Route {...rest} />;
-}
 
 function App() {
   return (
@@ -30,11 +21,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
-          <CustomRoute path="/modules" element={<Modules/>}/>
-          <CustomRoute path="/classes" element={<Classes/>}/>
+          <Route path="/modules" element={<Modules/>}/>
+          <Route path="/classes" element={<Classes/>}/>
         </Routes>
       </Container>
-      <Footer/>
     </Router>
   );
 }
