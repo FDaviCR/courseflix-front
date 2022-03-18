@@ -1,5 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
+import RequireAuth from './components/util/RequireAuth';
 
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -10,9 +12,6 @@ import Container from './components/layout/Container';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
-import { Context } from './context/AuthContext';
-
-
 function App() {
   return (
     <Router>
@@ -21,8 +20,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
-          <Route path="/modules" element={<Modules/>}/>
-          <Route path="/classes" element={<Classes/>}/>
+          <Route path="/modules" element={<RequireAuth><Modules/></RequireAuth>}/>
+          <Route path="/classes" element={<RequireAuth><Classes/></RequireAuth>}/>
         </Routes>
       </Container>
     </Router>
