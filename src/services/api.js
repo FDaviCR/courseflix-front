@@ -1,34 +1,14 @@
-const baseUrl = 'http://localhost:4000';
+import react from 'react';
+import axios from "axios";
 
-const request = async(method, endpoint, params, token = null) => {
-    method = method.toLowerCase();
-    let fullUrl = `${baseUrl}${endpoint}`;
-    let body = null;
+const baseURL = "http://localhost:4000";
 
-    switch (method) {
-        case 'get':
-            let queryString = new URLSearchParams(params).toString();
-            fullUrl += `?${queryString}`;
-        case 'post':
-        case 'put':
-        case 'delete':
-            body = JSON.stringify(params);
-        break;
+  
+const api = () => {
+
+    const getModules = () =>{
+
     }
-    let headers = { 'Content-Type': 'application/json' };
-    if(token) {
-        headers.Authorization = `Bearer ${token}`;
-    }
-    let req = await fetch(fullUrl, { method, headers, body});
-    let json = await req.json();
-    return json;
 }
 
-export default function () {
-    return{ 
-        listModules: async () => {
-            let json = await request('get', '/modules', {});
-            return json;
-        }
-    };
-};
+export default api;

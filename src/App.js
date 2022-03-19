@@ -24,6 +24,7 @@ function App() {
           <Route path="/classes" element={<RequireAuth><Classes/></RequireAuth>}/>
         </Routes>
       </Container>
+      <Footer/>
     </Router>
   );
 }
