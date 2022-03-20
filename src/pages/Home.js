@@ -19,6 +19,17 @@ function Home() {
         );
     });
 
+    function openClasses(idModule){
+        axios.get(`http://localhost:4000/classes/${idModule}`)
+            .then((response) => {
+                setClasses(response.data);
+            })
+            .catch((error) => {
+                console.error(error)
+            }
+        );
+    };
+
     return (
         <section className={styles.home_container}>
             <h1>
@@ -28,13 +39,32 @@ function Home() {
 
             <div className={styles.modules_container}>
                 {
-                    parseInt(modules.length) == 0 ? (
+                    parseInt(modules.length) === 0 ? (
                         <h1>Não há módulos</h1>
                     ):(
                         modules.map((module)=>(
                             <ModuleButton
                                 key={module.id}
+                                id={module.id}
                                 name={module.name}
+                                onClick={openClasses}
+                            />
+                        ))
+                    )
+                }
+            </div>
+
+            <div className={styles.classes_container}>
+                {
+                    parseInt(modules.length) === 0 ? (
+                        <br/>
+                    ):(
+                        modules.map((module)=>(
+                            <ModuleButton
+                                key={module.id}
+                                id={module.id}
+                                name={module.name}
+                                onClick={openClasses}
                             />
                         ))
                     )

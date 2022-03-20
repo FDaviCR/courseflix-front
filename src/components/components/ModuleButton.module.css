@@ -1,6 +1,6 @@
 .background_button{
     display: flex;
-    height: 10vh;
+    height: 8vh;
     min-width: 10vw;
     padding-right: 30px;
     padding-left: 30px;
@@ -16,8 +16,8 @@
 
 .button_text{
     color: #00a4b2;
-    vertical-align: middle;
-    line-height: 1.5;
+    font-size: 4vh;
+    text-transform: capitalize;
 }
 
 .background_button h1:hover{
