@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 //import api from '../services/api';
 import styles from './Home.module.css';
 import ModuleButton from '../components/components/ModuleButton';
+import ClassCard from '../components/components/ClassCard';
 import axios from 'axios';
 
 function Home() {
+    const [show, setShow] = useState(false);
     const [modules, setModules] = useState([]);
     const [classes, setClasses] = useState([]);
 
@@ -28,6 +30,7 @@ function Home() {
                 console.error(error)
             }
         );
+        setShow(true);
     };
 
     return (
@@ -56,15 +59,16 @@ function Home() {
 
             <div className={styles.classes_container}>
                 {
-                    parseInt(modules.length) === 0 ? (
-                        <br/>
+                    parseInt(classes.length) === 0 && show == true ? (
+                        <h1>Não há aulas cadastradas neste módulo</h1>
                     ):(
-                        modules.map((module)=>(
-                            <ModuleButton
-                                key={module.id}
-                                id={module.id}
-                                name={module.name}
-                                onClick={openClasses}
+                        classes.map((aula)=>(
+                            <ClassCard
+                                key={aula.id}
+                                id={aula.id}
+                                name={aula.name}
+                                description={aula.description}
+                                date={aula.date}
                             />
                         ))
                     )

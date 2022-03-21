@@ -1,0 +1,9 @@
+.classCard{
+    height: 10vh;
+    padding: 1em;
+    background-color: #00a4b2;
+    color: #fff;
+    margin-top: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+}

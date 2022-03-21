@@ -1,0 +1,11 @@
+.formCard{
+    height: 50vh;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    color: #00a4b2;
+    padding: 1.5em;
+    border-radius: 10px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    align-items: center;
+}

@@ -1,5 +1,9 @@
+import FormModules from '../components/components/FormModules';
+
 function Modules() {
-    return <h1>Modules</h1>
+    return (
+        <FormModules />
+    );
 }
 
 export default Modules;

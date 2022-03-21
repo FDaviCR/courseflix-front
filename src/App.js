@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
-          <Route path="/modules" element={<RequireAuth><Modules/></RequireAuth>}/>
+          <Route path="/modules" element={<Modules/>}/>
           <Route path="/classes" element={<RequireAuth><Classes/></RequireAuth>}/>
         </Routes>
       </Container>
